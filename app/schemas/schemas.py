@@ -1,6 +1,7 @@
+from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel, PositiveInt
+from pydantic import BaseModel, ConfigDict, PositiveInt
 
 
 class TransactionCreate(BaseModel):
@@ -17,3 +18,6 @@ class TransactionUpdate(BaseModel):
 
 class Transaction(TransactionCreate):
     id: int
+    created_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
